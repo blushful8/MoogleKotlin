@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Moogle Kotlin</string>
+    <string name="enter_first_name">Введіть ім\'я</string>
+    <string name="enter_email">Введіть email</string>
+    <string name="textRegistration">Реєстрація</string>
+    <string name="ok">OK</string>
+    <string name="enter_password">Введіть пароль</string>
+    <string name="you_already_registration">Ви вже зареєстровані?</string>
+    <string name="login">Login</string>
+    <string name="username">username</string>
+    <string name="userid">userId</string>
+    <string name="your_email">Your email</string>
+    <string name="logout">Logout</string>
+    <string name="you_are_not_register">Ви ще не зареєстровані?</string>
+    <string name="back_main">На головну</string>
+</resources>

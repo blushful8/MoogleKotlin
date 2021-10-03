@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "530446344713",
+    "firebase_url": "https://moogle-kotlin-e0a9f-default-rtdb.firebaseio.com",
+    "project_id": "moogle-kotlin-e0a9f",
+    "storage_bucket": "moogle-kotlin-e0a9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:530446344713:android:8688137f9fae3fb91b0ed8",
+        "android_client_info": {
+          "package_name": "com.example.mooglekotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "530446344713-4n59lt6aj88pqj05nm6e1g63k5042rgf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mooglekotlin",
+            "certificate_hash": "59270ac3c8bc965610a46b245325a8813adf1902"
+          }
+        },
+        {
+          "client_id": "530446344713-uo6s91kr7crrrie9ccikjo4cdoftcsmb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtCVtGe2sQSrEf9Gkp1k3zGGKi9k1gxkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "530446344713-uo6s91kr7crrrie9ccikjo4cdoftcsmb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
