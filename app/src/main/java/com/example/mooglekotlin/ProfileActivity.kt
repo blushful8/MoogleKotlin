@@ -51,7 +51,7 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
         chat?.setOnClickListener{
-            intent = Intent(this@ProfileActivity, MessageActivity::class.java)
+            intent = Intent(this@ProfileActivity, ChatActivity::class.java)
             startActivity(intent)
 
         }
@@ -68,6 +68,7 @@ class ProfileActivity : AppCompatActivity() {
 
         Logout = findViewById(R.id.btn_Logout)
         chat = findViewById(R.id.btn_chat)
+
     }
 
     fun setValueFields(){
