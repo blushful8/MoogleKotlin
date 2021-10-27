@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,12 +9,24 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/text_name"
+        android:text="@string/name"
+        android:textStyle="italic"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        app:drawableEndCompat="@drawable/ic_action_profile" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/tv_name"
         android:text="@string/username"
         android:textSize="16sp"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/cardview_dark_background"
-        android:layout_marginTop="30dp"
+        android:layout_below="@id/text_name"
         />
 
     <androidx.constraintlayout.utils.widget.ImageFilterButton
@@ -22,21 +35,95 @@
         android:id="@+id/btn_chat"
         android:background="@drawable/ic_action_chat"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/tv_name"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/tv_email"
+        android:layout_marginTop="25dp"
         android:layout_marginStart="10dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_button"
+        android:background="@drawable/ic_action_create_chat"
+        android:layout_below="@id/tv_email"
+        android:layout_toRightOf="@id/btn_chat"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_toEndOf="@id/btn_chat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_find_chat"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/find_chat"
+        android:textColor="@color/black"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:id="@+id/til_find_chat"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/browser_actions_divider_color"
+        android:layout_below="@id/text_find_chat"
+        android:layout_marginLeft="50dp">
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/find_chat"
+            android:background="@color/browser_actions_bg_grey" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.utils.widget.MotionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/til_find_chat"
+        android:layout_below="@id/text_find_chat"
+        android:layout_marginStart="10dp"
+        android:id="@+id/btn_find_chat"
+        android:text="@string/ok"
+        android:layout_toEndOf="@id/til_find_chat"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:text="@string/id"
+        android:layout_above="@id/tv_userId"
+        android:layout_centerHorizontal="true"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_userId"
         android:textSize="12sp"
         android:text="@string/userid"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150dp"
+        android:layout_above="@id/btn_Logout"
+        android:layout_marginBottom="15dp"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_email"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="@string/email"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_below="@id/tv_name"
+        android:layout_marginTop="2dp"
+        app:drawableEndCompat="@drawable/ic_action_email"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,8 +131,8 @@
         android:id="@+id/tv_emailId"
         android:textSize="14sp"
         android:text="@string/your_email"
+        android:layout_below="@id/tv_email"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginBottom="120dp"/>
 
     <androidx.appcompat.widget.AppCompatButton

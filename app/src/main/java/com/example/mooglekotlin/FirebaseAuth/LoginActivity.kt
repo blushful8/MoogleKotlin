@@ -36,6 +36,14 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         init()
+
+        if (mAuth!!.getCurrentUser() != null) {
+            // User is signed in (getCurrentUser() will be null if not signed in)
+            val intent = Intent(this, ProfileActivity::class.java);
+            startActivity(intent);
+            finish();
+        }
+
         clickButton()
 
         register?.setOnClickListener{

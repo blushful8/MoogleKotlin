@@ -11,12 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".ProfileActivity">
-
-        </activity>
-        <activity android:name=".FirebaseAuth.RegistrationActivity">
-
-        </activity>
+        <activity android:name=".RoomActivity"></activity>
+        <activity android:name=".CreateRoomActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".FirebaseAuth.RegistrationActivity" />
         <activity android:name=".FirebaseAuth.LoginActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name="com.example.webViewkotlin.MainActivity">

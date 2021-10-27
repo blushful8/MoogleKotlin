@@ -13,4 +13,10 @@
     <string name="logout">Logout</string>
     <string name="you_are_not_register">Ви ще не зареєстровані?</string>
     <string name="back_main">На головну</string>
+    <string name="create_room">Створити кімнату</string>
+    <string name="roomid">RoomId</string>
+    <string name="find_chat">Пошук чату</string>
+    <string name="id">Ваш Id</string>
+    <string name="email">Email</string>
+    <string name="name">Ім\'я</string>
 </resources>

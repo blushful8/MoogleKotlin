@@ -1,45 +1,42 @@
 package com.example.mooglekotlin
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mooglekotlin.databinding.ActivityChatBinding
-import com.example.mooglekotlin.databinding.ActivityMainBinding
-import com.example.mooglekotlin.databinding.ActivityMessageBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class ChatActivity : AppCompatActivity() {
-
-    private lateinit var clickMessage: FloatingActionButton
-    private lateinit var textInput: EditText
-    private var binding: ActivityChatBinding? = null
     private var adapter: MessageAdapter? = null
-    private var mDataRef: DatabaseReference? = null
-    var userName = Message()
-    var value: String? = null
+    // init binding
+    private var binding: ActivityChatBinding? = null
+
+    var UserName: String? = null
 
     val database =
         Firebase.database("https://moogle-kotlin-e0a9f-default-rtdb.firebaseio.com/").reference
+    // Firebase work with path "Users"
     val mNamedatabase =
         Firebase.database("https://moogle-kotlin-e0a9f-default-rtdb.firebaseio.com/")
             .getReference("Users")
+
+    // init auth and check when user don't sign in yet
     val auth = FirebaseAuth.getInstance()
-    val mUser = auth!!.currentUser
-    val mUserReference = mNamedatabase!!.child(mUser!!.uid)
+    val mUser = auth.currentUser
+    val mUserReference = mNamedatabase.child(mUser!!.uid)
     val name = mUserReference.addValueEventListener(object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
-            value = snapshot.child("userName").value as String
+            // get value from Firebase
+            UserName = snapshot.child("userName").value as String
 
         }
 
@@ -49,40 +46,32 @@ class ChatActivity : AppCompatActivity() {
 
     })
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // work with binding
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-
-
-
-        init()
         initRcView()
+        // visible chat from Firebase
         onChangeListener(database)
 
         binding?.btnFAB?.setOnClickListener {
-            if (textInput.length() > 0) {
+            if (binding?.etMessage?.length()!! > 0) {
+                val message = binding?.etMessage?.text.toString()
                 database.child("Messages").child(database.push().key ?: "message").setValue(
                     Message(
-                        textInput.text.toString(),
-                        value
+                        message = message,
+                        name = UserName
                     )
                 )
-                textInput.setText("")
+                binding?.etMessage?.setText("")
             } else {
                 Toast.makeText(this, "You are trying input empty text", Toast.LENGTH_SHORT).show()
             }
-
-
         }
-
-
-    }
-
-    fun init() {
-        textInput = findViewById(R.id.et_message)
-
     }
 
     fun initRcView() = with(binding) {
@@ -100,13 +89,10 @@ class ChatActivity : AppCompatActivity() {
                     val message = s.getValue(Message::class.java)
                     if (message != null) {
                         list.add(message)
-
                     }
                 }
                 adapter?.submitList(list)
                 binding?.recycler?.smoothScrollToPosition(list.size)
-
-
             }
 
             override fun onCancelled(error: DatabaseError) {

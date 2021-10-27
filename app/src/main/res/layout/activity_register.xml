@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirebaseAuth.RegistrationActivity">
+    tools:context=".FirebaseAuth.RegistrationActivity"
+    android:background="@drawable/gradient_blue">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textRegistration"
         android:textSize="24sp"
+        android:textStyle="bold"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/et_firstName"
@@ -20,9 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/et_firstName"
+        android:layout_margin="10dp"
         android:hint="@string/enter_first_name"
         android:textSize="18sp"
-        android:textColorHint="@color/black"
         android:layout_centerVertical="true"
         android:inputType="text"
         />
@@ -33,11 +35,11 @@
         android:id="@+id/et_email"
         android:hint="@string/enter_email"
         android:textSize="18sp"
-        android:textColorHint="@color/black"
+        android:layout_margin="10dp"
         android:layout_below="@id/et_firstName"
         android:layout_marginTop="15dp"
         android:inputType="textEmailAddress"
-        />
+        tools:targetApi="lollipop" />
 
     <EditText
         android:layout_width="match_parent"
@@ -45,9 +47,9 @@
         android:id="@+id/et_password"
         android:textSize="18sp"
         android:hint="@string/enter_password"
-        android:textColorHint="@color/black"
         android:layout_below="@id/et_email"
         android:layout_centerVertical="true"
+        android:layout_margin="10dp"
         android:layout_marginTop="15dp"
         android:inputType="textPassword"/>
 

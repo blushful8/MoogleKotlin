@@ -1,21 +1,24 @@
 package com.example.mooglekotlin
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mooglekotlin.databinding.ActivityMessageBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MessageAdapter: ListAdapter<Message, MessageAdapter.ItemHolder>(ItemComparator()) {
 
 
-
     class ItemHolder(private val binding: ActivityMessageBinding) : RecyclerView.ViewHolder(binding.root){
+        @SuppressLint("SimpleDateFormat")
         fun bind(message: Message) = with(binding){
             tvUserName.text = message.name
             tvMessage.text = message.message
-
+            time.text = message.time
 
         }
     companion object{
