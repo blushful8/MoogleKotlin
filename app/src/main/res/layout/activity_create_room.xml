@@ -16,7 +16,45 @@
         android:textSize="16sp"
         android:padding="10dp"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_find_chat"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/find_chat"
+        android:textColor="@color/black"/>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:id="@+id/til_find_chat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="@color/browser_actions_divider_color"
+        android:layout_below="@id/text_find_chat">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/find_chat"
+            android:drawableEnd="@drawable/ic_baseline_empty_field"
+            android:drawableRight="@drawable/ic_baseline_empty_field" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/til_find_chat"
+        android:layout_marginStart="10dp"
+        android:id="@+id/btn_find_chat"
+        android:layout_marginLeft="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/search"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:background="@drawable/gradient_blue"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

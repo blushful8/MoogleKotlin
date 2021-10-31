@@ -5,9 +5,11 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.mooglekotlin.databinding.ActivityCreateRoomBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -52,6 +54,8 @@ class CreateRoomActivity : AppCompatActivity() {
         binding = ActivityCreateRoomBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
+        startThread()
+
         binding?.createButton?.setOnClickListener {
             val key = database.push().key
             binding?.roomId?.text = key.toString()
@@ -76,6 +80,34 @@ class CreateRoomActivity : AppCompatActivity() {
 
             Toast.makeText(this, "RoomId is successful copy", Toast.LENGTH_SHORT).show()
         }
+        binding?.btnFindChat?.setOnClickListener{
+            val i = Intent(this@CreateRoomActivity, RoomActivity::class.java)
+            val id = binding?.findChat?.text.toString()
+            i.putExtra("Id", id)
+            startActivity(i)
+        }
 
     }
+
+    fun startThread(){
+        val myThread = Thread {
+            while (true) {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.ic_baseline_empty_field)
+                val draw = ContextCompat.getDrawable(this, R.drawable.ic_baseline_not_empty_field)
+                if (binding?.findChat?.length() == 0) {
+                    binding?.findChat?.setCompoundDrawablesWithIntrinsicBounds(null,null,drawable,null)
+                } else {
+                    binding?.findChat?.setCompoundDrawablesWithIntrinsicBounds(null,null,draw,null)
+                }
+
+                try {
+                    Thread.sleep(1000)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        myThread.start()
+    }
+
 }

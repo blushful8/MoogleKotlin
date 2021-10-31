@@ -15,8 +15,7 @@
         android:textSize="14sp"
         android:textColor="@color/black"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
+        android:layout_below="@id/btn_chat"
         app:drawableEndCompat="@drawable/ic_action_profile" />
 
     <TextView
@@ -35,7 +34,6 @@
         android:id="@+id/btn_chat"
         android:background="@drawable/ic_action_chat"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/tv_email"
         android:layout_marginTop="25dp"
         android:layout_marginStart="10dp"
         android:layout_alignParentLeft="true"
@@ -46,49 +44,22 @@
         android:layout_height="wrap_content"
         android:id="@+id/create_button"
         android:background="@drawable/ic_action_create_chat"
-        android:layout_below="@id/tv_email"
         android:layout_toRightOf="@id/btn_chat"
         android:layout_marginTop="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_toEndOf="@id/btn_chat" />
-
-    <TextView
+    <androidx.constraintlayout.utils.widget.ImageFilterButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/text_find_chat"
-        android:textSize="18sp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/find_chat"
-        android:textColor="@color/black"/>
+        android:id="@+id/btn_add_chat"
+        android:background="@drawable/ic_action_search"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="5dp"
+        android:layout_toRightOf="@id/create_button"
+        android:layout_toEndOf="@id/create_button"
+        android:layout_marginLeft="5dp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="200dip"
-        android:layout_height="wrap_content"
-        android:id="@+id/til_find_chat"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/browser_actions_divider_color"
-        android:layout_below="@id/text_find_chat"
-        android:layout_marginLeft="50dp">
-    <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/find_chat"
-            android:background="@color/browser_actions_bg_grey" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.constraintlayout.utils.widget.MotionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/til_find_chat"
-        android:layout_below="@id/text_find_chat"
-        android:layout_marginStart="10dp"
-        android:id="@+id/btn_find_chat"
-        android:text="@string/ok"
-        android:layout_toEndOf="@id/til_find_chat"
-        android:layout_marginLeft="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
