@@ -24,7 +24,7 @@ class CreateRoomActivity : AppCompatActivity() {
     private var binding: ActivityCreateRoomBinding? = null
 
 
-    private var value: String? = null
+    private var userName: String? = null
 
     val database =
         Firebase.database("https://moogle-kotlin-e0a9f-default-rtdb.firebaseio.com/")
@@ -41,7 +41,7 @@ class CreateRoomActivity : AppCompatActivity() {
 
     val name = mUserReference.addValueEventListener(object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
-            value = snapshot.child("userName").value as String
+            userName = snapshot.child("userName").value as String
         }
         override fun onCancelled(error: DatabaseError) {
             TODO("Not yet implemented")
@@ -54,15 +54,13 @@ class CreateRoomActivity : AppCompatActivity() {
         binding = ActivityCreateRoomBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        startThread()
-
         binding?.createButton?.setOnClickListener {
             val key = database.push().key
             binding?.roomId?.text = key.toString()
 
             database.child(key.toString()).push().setValue(
                 Message(
-                    "Чат створив(ла) $value",
+                    "Чат створив(ла) $userName",
                     "Support by Firebase"
                 )
             )
@@ -88,26 +86,4 @@ class CreateRoomActivity : AppCompatActivity() {
         }
 
     }
-
-    fun startThread(){
-        val myThread = Thread {
-            while (true) {
-                val drawable = ContextCompat.getDrawable(this, R.drawable.ic_baseline_empty_field)
-                val draw = ContextCompat.getDrawable(this, R.drawable.ic_baseline_not_empty_field)
-                if (binding?.findChat?.length() == 0) {
-                    binding?.findChat?.setCompoundDrawablesWithIntrinsicBounds(null,null,drawable,null)
-                } else {
-                    binding?.findChat?.setCompoundDrawablesWithIntrinsicBounds(null,null,draw,null)
-                }
-
-                try {
-                    Thread.sleep(1000)
-                } catch (e: InterruptedException) {
-                    e.printStackTrace()
-                }
-            }
-        }
-        myThread.start()
-    }
-
 }

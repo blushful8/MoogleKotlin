@@ -37,9 +37,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/find_chat"
-            android:drawableEnd="@drawable/ic_baseline_empty_field"
-            android:drawableRight="@drawable/ic_baseline_empty_field" />
+            android:id="@+id/find_chat" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
