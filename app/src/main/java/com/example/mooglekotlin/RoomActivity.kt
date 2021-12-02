@@ -89,7 +89,6 @@ class RoomActivity : AppCompatActivity() {
                     val message = s.getValue(Message::class.java)
                     if (message != null) {
                         list.add(message)
-
                     }
                 }
                 adapter?.submitList(list)

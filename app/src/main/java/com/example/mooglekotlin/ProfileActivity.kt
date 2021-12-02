@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatButton
 import com.example.mooglekotlin.FirebaseAuth.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -38,6 +39,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
 
         init()
         valueId = FirebaseAuth.getInstance()

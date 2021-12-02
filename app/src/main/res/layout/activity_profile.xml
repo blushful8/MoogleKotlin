@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".ProfileActivity"
+    android:background="@drawable/gradient_yellow">
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,17 +50,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_toEndOf="@id/btn_chat" />
-    <androidx.constraintlayout.utils.widget.ImageFilterButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_add_chat"
-        android:background="@drawable/ic_action_search"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="5dp"
-        android:layout_toRightOf="@id/create_button"
-        android:layout_toEndOf="@id/create_button"
-        android:layout_marginLeft="5dp" />
-
 
     <TextView
         android:layout_width="wrap_content"

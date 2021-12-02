@@ -14,6 +14,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageButton
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.mooglekotlin.FirebaseAuth.LoginActivity
 import com.example.mooglekotlin.R
 import java.lang.Exception
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         init()
         goWebView()
