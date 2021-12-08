@@ -98,6 +98,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="D:\pngtree-letter-m-3d-logo-design-png-png-image_2933784.jpg" />
+                                                <entry key="scalingPercent" value="106" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -293,11 +295,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>
