@@ -5,9 +5,11 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.mooglekotlin.databinding.ActivityCreateRoomBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -22,7 +24,7 @@ class CreateRoomActivity : AppCompatActivity() {
     private var binding: ActivityCreateRoomBinding? = null
 
 
-    private var value: String? = null
+    private var userName: String? = null
 
     val database =
         Firebase.database("https://moogle-kotlin-e0a9f-default-rtdb.firebaseio.com/")
@@ -39,7 +41,7 @@ class CreateRoomActivity : AppCompatActivity() {
 
     val name = mUserReference.addValueEventListener(object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
-            value = snapshot.child("userName").value as String
+            userName = snapshot.child("userName").value as String
         }
         override fun onCancelled(error: DatabaseError) {
             TODO("Not yet implemented")
@@ -58,7 +60,7 @@ class CreateRoomActivity : AppCompatActivity() {
 
             database.child(key.toString()).push().setValue(
                 Message(
-                    "Чат створив(ла) $value",
+                    "Чат створив(ла) $userName",
                     "Support by Firebase"
                 )
             )
@@ -75,6 +77,12 @@ class CreateRoomActivity : AppCompatActivity() {
             clipboard.setPrimaryClip(clip)
 
             Toast.makeText(this, "RoomId is successful copy", Toast.LENGTH_SHORT).show()
+        }
+        binding?.btnFindChat?.setOnClickListener{
+            val i = Intent(this@CreateRoomActivity, RoomActivity::class.java)
+            val id = binding?.findChat?.text.toString()
+            i.putExtra("Id", id)
+            startActivity(i)
         }
 
     }

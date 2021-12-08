@@ -1,11 +1,12 @@
 package com.example.mooglekotlin
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatButton
 import com.example.mooglekotlin.FirebaseAuth.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -20,8 +21,6 @@ class ProfileActivity : AppCompatActivity() {
     var email: TextView? = null
     var userName:TextView? = null
 
-    private var findChat: EditText? = null
-
     private var mAuth: FirebaseAuth? = null
     private var mDatabaseReference: DatabaseReference? = null
     private var mDatabase : FirebaseDatabase? = null
@@ -35,12 +34,12 @@ class ProfileActivity : AppCompatActivity() {
     var Logout: AppCompatButton? = null
     var chat: ImageButton? = null
     private var createRoom: ImageButton? = null
-    private var RoomChat: AppCompatButton? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
 
         init()
         valueId = FirebaseAuth.getInstance()
@@ -49,6 +48,7 @@ class ProfileActivity : AppCompatActivity() {
         mDatabase = Firebase.database("https://moogle-kotlin-e0a9f-default-rtdb.firebaseio.com/")
         mDatabaseReference = mDatabase!!.reference.child("Users")
         mAuth = FirebaseAuth.getInstance()
+
 
         Logout?.setOnClickListener{
             // Logout
@@ -66,14 +66,6 @@ class ProfileActivity : AppCompatActivity() {
             intent = Intent(this@ProfileActivity, CreateRoomActivity::class.java)
             startActivity(intent)
         }
-        RoomChat?.setOnClickListener{
-
-
-            val i = Intent(this@ProfileActivity, RoomActivity::class.java)
-            id = findChat?.text.toString()
-            i.putExtra("Id", id)
-            startActivity(i)
-        }
 
     }
 
@@ -89,8 +81,6 @@ class ProfileActivity : AppCompatActivity() {
         Logout = findViewById(R.id.btn_Logout)
         chat = findViewById(R.id.btn_chat)
         createRoom = findViewById(R.id.create_button)
-        RoomChat = findViewById(R.id.btn_find_chat)
-        findChat = findViewById(R.id.find_chat)
     }
 
     fun setValueFields(){
@@ -98,7 +88,10 @@ class ProfileActivity : AppCompatActivity() {
         nameId?.setText(userIdString)
     }
 
+
+
     override fun onStart() {
+
         super.onStart()
         val mUser = mAuth!!.currentUser
         val mUserReference = mDatabaseReference!!.child(mUser!!.uid)
